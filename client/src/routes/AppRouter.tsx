@@ -6,7 +6,6 @@ import ProductDetails from "../pages/ProductDetails"
 import AddProduct from "../pages/AddProduct"
 import EditProduct from "../pages/EditProduct"
 
-
 function AppRouter() {
 
     return (
