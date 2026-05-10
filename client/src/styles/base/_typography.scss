@@ -1,0 +1,13 @@
+@use '../abstracts/functions' as *;
+
+body {
+  font-family: system-ui, sans-serif;
+  font-size: font-size(base);
+  color: color(dark);
+  background: color(light);
+}
+
+h1 { font-size: font-size(xxl); }
+h2 { font-size: font-size(xl); }
+h3 { font-size: font-size(lg); }
+p  { font-size: font-size(base); }

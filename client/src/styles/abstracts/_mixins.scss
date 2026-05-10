@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use './variables' as *;
+@use './functions' as *;
+
+@mixin respond($breakpoint) {
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid($cols, $gap: md) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: space($gap);
+}

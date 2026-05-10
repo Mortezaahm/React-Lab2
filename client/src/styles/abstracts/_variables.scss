@@ -1,0 +1,36 @@
+// Colors
+$colors: (
+  primary: #4f46e5,
+  secondary: #06b6d4,
+  success: #22c55e,
+  danger: #ef4444,
+  warning: #f59e0b,
+  dark: #111827,
+  light: #f9fafb
+);
+
+// Spacing scale
+$spacing-scale: (
+  xs: 4px,
+  sm: 8px,
+  md: 16px,
+  lg: 24px,
+  xl: 32px
+);
+
+// Font sizes
+$font-sizes: (
+  sm: 0.875rem,
+  base: 1rem,
+  lg: 1.25rem,
+  xl: 1.5rem,
+  xxl: 2rem
+);
+
+// Breakpoints
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
+);

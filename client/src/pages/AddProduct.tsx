@@ -1,0 +1,71 @@
+import { useState } from "react"
+import { addProduct } from "../services/productService"
+
+function AddProduct() {
+  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const [image, setImage] = useState('');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+
+        const newProduct = {
+            title,
+            price,
+            description,
+            category,
+            image
+            }
+
+        const data = await addProduct(newProduct);
+        setTitle("")
+        setPrice(0)
+        setDescription("")
+        setCategory("")
+        setImage("")
+        console.log(data);
+    }
+
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+            type="text"
+            placeholder="Name of Product..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            />
+            <input
+            type="text"
+            placeholder="Price of Product..."
+            value={price}
+            onChange={(e) => setPrice(Number(e.target.value))}
+            />
+            <input
+            type="text"
+            placeholder="Description for Product..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            />
+            <input
+            type="text"
+            placeholder="Category of Product..."
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            />
+            <input
+            type="text"
+            placeholder="Image of Product..."
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            />
+            <button type="submit">Submit</button>
+      </form>
+    </>
+  )
+}
+
+export default AddProduct

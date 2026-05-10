@@ -1,0 +1,9 @@
+@use '../abstracts/variables' as *;
+
+@each $name, $value in $spacing-scale {
+  .m-#{$name} { margin: $value; }
+  .p-#{$name} { padding: $value; }
+
+  .mt-#{$name} { margin-top: $value; }
+  .mb-#{$name} { margin-bottom: $value; }
+}
