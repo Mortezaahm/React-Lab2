@@ -1,6 +1,6 @@
 // Services
 import axios from "axios";
-import type { NewProduct } from "../types/product";
+import type { UpdateProduct, NewProduct } from "../types/product";
 
 const base_URL = "https://fakestoreapi.com/products";
 
@@ -21,6 +21,17 @@ export async function getProductById (id:number) {
 export async function addProduct(newProduct:NewProduct) {
     try {
         const response = await axios.post(base_URL, newProduct);
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function updateProduct( id: number, updatedProduct: UpdateProduct ) {
+    try {
+        const response = await axios.patch(
+            `https://fakestoreapi.com/products/${id}`, updatedProduct
+        );
         return response.data
     } catch (error) {
         console.log(error);

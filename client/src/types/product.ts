@@ -14,3 +14,11 @@ export interface NewProduct {
     category?: string
     image?: string
 }
+
+export interface UpdateProduct {
+    title?: string
+    price?: number
+    description?: string
+    category?: string
+    image?: string
+}
