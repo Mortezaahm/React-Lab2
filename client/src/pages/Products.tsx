@@ -5,11 +5,20 @@ import ProductCard from "../components/ProductCard";
 
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function getAll () {
-      const data = await getAllProducts();
-      setProducts(data)
+      try {
+        setLoading(true)
+        const data = await getAllProducts();
+        setProducts(data)
+      } catch {
+        setError("Failed to load products")
+      } finally {
+        setLoading(false)
+      }
     }
     getAll();
   }, [])
@@ -22,6 +31,9 @@ function Products() {
       console.log(error)
     }
   }
+
+  if (loading) {return <h2>Loading...</h2>}
+  if (error) return <h2>{error}</h2>
 
   return (
     <div className="container">

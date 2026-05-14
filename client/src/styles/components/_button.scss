@@ -1,0 +1,38 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+
+.btn {
+  display: inline-block;
+  padding: space(sm) space(md);
+
+  border: none;
+  border-radius: space(sm);
+
+  font-size: font-size(base);
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  &--primary {
+    background: color(primary);
+    color: white;
+  }
+
+  &--secondary {
+    background: color(secondary);
+    color: white;
+  }
+
+  &--danger {
+    background: color(danger);
+    color: white;
+  }
+}

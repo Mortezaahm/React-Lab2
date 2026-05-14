@@ -41,11 +41,12 @@ function EditProduct() {
 
   return (
     <>
-      <form onSubmit={handleUpdateProduct}>
+      <form onSubmit={handleUpdateProduct} className="form">
         <input
             type="text"
             placeholder="Name of Product..."
             value={productData.title}
+            className="form__input"
             onChange={(e) => setProductData(prev => ({
                 ...prev ,
                 title: e.target.value
@@ -56,6 +57,7 @@ function EditProduct() {
             type="text"
             placeholder="Price of Product..."
             value={productData.price}
+            className="form__input"
             onChange={(e) => setProductData(prev => ({
                 ...prev,
                 price:Number(e.target.value)
@@ -66,6 +68,7 @@ function EditProduct() {
             type="text"
             placeholder="Description for Product..."
             value={productData.description}
+            className="form__input"
             onChange={(e) => setProductData(prev => ({
               ...prev,
               description: e.target.value
@@ -76,6 +79,7 @@ function EditProduct() {
             type="text"
             placeholder="Category of Product..."
             value={productData.category}
+            className="form__input"
             onChange={(e) => setProductData(prev => ({
                 ...prev,
                 category: e.target.value
@@ -86,13 +90,14 @@ function EditProduct() {
             type="text"
             placeholder="Image of Product..."
             value={productData.image}
+            className="form__input"
             onChange={(e) => setProductData(prev => ({
                 ...prev,
                 image: e.target.value
               }))
             }
             />
-            <button type="submit">Update Product</button>
+            <button type="submit" className="form__button">Update Product</button>
       </form>
     </>
   )

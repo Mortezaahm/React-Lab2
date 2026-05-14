@@ -23,19 +23,24 @@ function ProductCard({ product , onDelete }: { product: Product, onDelete:(id:nu
       <p className="product-card__category">
         {product.category}
       </p>
-
-      <button onClick={(e)=> {
-        e.stopPropagation();
-        navigate(`/edit-product/${product.id}`)
-      }}>Edit</button>
-
-      <button onClick={(e) => {
+      <div className="product-card__actions">
+        <button
+        className="btn btn--secondary"
+        onClick={(e)=> {
           e.stopPropagation();
-          onDelete(product.id)
-        }}
-      >
-        Delete
-      </button>
+          navigate(`/edit-product/${product.id}`)
+        }}>Edit</button>
+
+        <button
+          className="btn btn--danger"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(product.id)
+          }}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   )
 }

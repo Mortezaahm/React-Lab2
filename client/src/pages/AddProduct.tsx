@@ -31,8 +31,9 @@ function AddProduct() {
         setImage("")
 
         console.log(data);
+        // localStorage.setItem(data);
 
-        navigate(`/products/${data.id}`)
+        navigate('/products')
       } catch (error) {
         console.error("Failed to add product: ", error);
       }
@@ -41,38 +42,43 @@ function AddProduct() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <input
             type="text"
             placeholder="Name of Product..."
+            className="form__input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             />
             <input
             type="text"
             placeholder="Price of Product..."
+            className="form__input"
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
             />
             <input
             type="text"
             placeholder="Description for Product..."
+            className="form__input"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             />
             <input
             type="text"
             placeholder="Category of Product..."
+            className="form__input"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             />
             <input
             type="text"
             placeholder="Image of Product..."
+            className="form__input"
             value={image}
             onChange={(e) => setImage(e.target.value)}
             />
-            <button type="submit">Add Product</button>
+            <button type="submit" className="form__button">Add Product</button>
       </form>
     </>
   )
