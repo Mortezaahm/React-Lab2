@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { addProduct } from "../services/productService"
+import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
   const [title, setTitle] = useState('');
@@ -7,6 +8,8 @@ function AddProduct() {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [image, setImage] = useState('');
+
+  const navigate = useNavigate();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -19,13 +22,20 @@ function AddProduct() {
             image
             }
 
+      try {
         const data = await addProduct(newProduct);
         setTitle("")
         setPrice(0)
         setDescription("")
         setCategory("")
         setImage("")
+
         console.log(data);
+
+        navigate(`/products/${data.id}`)
+      } catch (error) {
+        console.error("Failed to add product: ", error);
+      }
     }
 
 
@@ -62,7 +72,7 @@ function AddProduct() {
             value={image}
             onChange={(e) => setImage(e.target.value)}
             />
-            <button type="submit">Submit</button>
+            <button type="submit">Add Product</button>
       </form>
     </>
   )

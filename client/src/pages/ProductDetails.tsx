@@ -5,22 +5,42 @@ import { getProductById } from "../services/productService"
 
 function ProductDetails() {
 
-  const [productDetail, setProductDetail] = useState<Product>()
+  const [productDetail, setProductDetail] = useState<Product | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const { id } = useParams();
   const productId = Number(id);
+  const invalidProductId = isNaN(productId);
 
   useEffect(() => {
+    if (invalidProductId) {
+      return
+    }
+
     async function sendParams() {
-    const data = await getProductById(productId);
-    setProductDetail(data);
-  }
+      try {
+        setLoading(true)
+        const data = await getProductById(productId);
+
+        if (!data) {
+          setError("Product not found")
+          return
+        }
+        setProductDetail(data);
+      } catch {
+        setError("Failed to load product")
+      } finally {
+        setLoading(false)
+      }
+    }
+
     sendParams();
-  }, [productId])
+  }, [productId, invalidProductId])
 
-  if (!productDetail) {
-    return <h2>Loading...</h2>
-  }
-
+  if (invalidProductId) return <h2>Invalid product id</h2>
+  if (loading) {return <h2>Loading...</h2>}
+  if (error) return <h2>{error}</h2>
+  if (!productDetail) return null
 
   return (
     <div>

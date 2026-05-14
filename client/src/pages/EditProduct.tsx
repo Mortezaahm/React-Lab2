@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { getProductById, updateProduct } from "../services/productService"
 import type { UpdateProduct } from "../types/product";
+import { useNavigate } from "react-router-dom";
 
 
 function EditProduct() {
   const { id } = useParams();
   const productId = Number(id);
+  const navigate = useNavigate();
 
   const [productData, setProductData] = useState<UpdateProduct>({
     title: "",
@@ -28,7 +30,10 @@ function EditProduct() {
       e.preventDefault();
       try {
         const data = await updateProduct(productId, productData)
-        if (data) setProductData(data)
+        if (data) {
+          setProductData(data)
+          navigate(`/products/${productId}`)
+        }
       } catch (error) {
         console.log(error)
         }
@@ -87,7 +92,7 @@ function EditProduct() {
               }))
             }
             />
-            <button type="submit">Submit</button>
+            <button type="submit">Update Product</button>
       </form>
     </>
   )

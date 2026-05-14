@@ -1,32 +1,36 @@
-// import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 const Navbar = () => {
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar__logo">Logo</Link>
-
-      <div className="navbar__links">
-        <Link to="/">Home</Link>
-        <Link to="/products">Products</Link>
-        <Link to="/add-product">Add Product</Link>
+      <div className="navbar__container">
+        <NavLink to="/" className="navbar__logo">Logo</NavLink>
+        <div className="navbar__links">
+          <NavLink to="/" onClick={closeMenu}>Home</NavLink>
+          <NavLink to="/products" onClick={closeMenu}> Products </NavLink>
+          <NavLink to="/add-product" onClick={closeMenu}>Add Product</NavLink>
+        </div>
       </div>
 
-      {/* Hamburger menu for mobile
-      <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
-        Menu
+
+
+      <button onClick={() => setIsOpen(!isOpen)} className="navbar__toggle">
+        ☰ Menu
       </button>
 
       {isOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white flex flex-col items-center gap-2 p-4 md:hidden">
-          <Link to="#">Home</Link>
-          <Link to="#">Products</Link>
-          <Link to="#">Add Product</Link>
+        <div className="navbar__mobile">
+          <NavLink to="/"  onClick={closeMenu}>Home</NavLink>
+          <NavLink  to="/products" onClick={closeMenu}>Products</NavLink>
+          <NavLink  to="/add-product" onClick={closeMenu}>Add Product</NavLink>
         </div>
       )}
-        */}
+
     </nav>
   );
 };
