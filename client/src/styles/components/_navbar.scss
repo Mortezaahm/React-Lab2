@@ -1,0 +1,29 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: space(md);
+  background: color(light);
+  box-shadow: 0 2px 8px rgba($color: #000000, $alpha: 0.1);
+
+    &__logo{
+        font-size: font-size(base);
+        color: color(danger);
+        font-weight: bold;
+    }
+    &__links{
+        display: flex;
+        gap: space(md);
+    }
+    a {
+        text-decoration: none;
+        &:hover{
+        transform: translateY(-4px) scale(1.03);
+        }
+    }
+}
