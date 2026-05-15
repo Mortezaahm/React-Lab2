@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 import Home from "../pages/Home"
 import Products from "../pages/Products"
@@ -20,6 +21,7 @@ function AppRouter() {
         <Route path="/add-product" element= {<AddProduct />} />
         <Route path="/edit-product/:id" element= {<EditProduct />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

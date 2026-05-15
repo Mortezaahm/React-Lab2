@@ -1,6 +1,10 @@
+
 function SearchBar() {
+
   return (
-    <div>SearchBar</div>
+    <div>
+      Search
+    </div>
   )
 }
 

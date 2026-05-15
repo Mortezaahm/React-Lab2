@@ -1,0 +1,31 @@
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+
+.home {
+  min-height: 80vh;
+
+  @include flex-center;
+
+  text-align: center;
+
+  padding: space(xl);
+
+  &__hero {
+    max-width: 700px;
+  }
+
+  &__title {
+    margin-bottom: space(md);
+  }
+
+  &__description {
+    margin-bottom: space(lg);
+    line-height: 1.6;
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: center;
+    gap: space(md);
+  }
+}

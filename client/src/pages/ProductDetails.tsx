@@ -43,24 +43,26 @@ function ProductDetails() {
   if (!productDetail) return null
 
   return (
-    <div>
+    <div className="product-details">
       <img src={productDetail.image} alt={productDetail.title} />
 
-      <h3 className="product-card__title">
-        {productDetail.title}
-      </h3>
+      <div className="product-details__info">
+          <h3 className="product-card__title">
+          {productDetail.title}
+          </h3>
 
-      <p className="product-card__category">
-        {productDetail.description}
-      </p>
+        <p className="product-card__category">
+          {productDetail.description}
+        </p>
 
-      <p className="product-card__price">
-        {productDetail.price} $
-      </p>
+        <p className="product-card__price">
+          {productDetail.price} $
+        </p>
 
-      <p className="product-card__category">
-        {productDetail.category}
-      </p>
+        <p className="product-card__category">
+          {productDetail.category}
+        </p>
+      </div>
     </div>
   )
 }
