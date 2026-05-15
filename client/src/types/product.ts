@@ -22,3 +22,11 @@ export interface UpdateProduct {
     category?: string
     image?: string
 }
+
+export interface ProductFormData {
+  title: string
+  price: number
+  description: string
+  category: string
+  image: string
+}
