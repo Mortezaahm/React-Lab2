@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import Button from "../components/Button";
 
 function Home() {
   const navigate = useNavigate();
@@ -16,19 +17,19 @@ function Home() {
         </p>
 
         <div className="home__cta">
-          <button
-            className="btn btn--primary"
+          <Button
+            variant="primary"
             onClick={() => navigate("/products")}
           >
             View Products
-          </button>
+          </Button>
 
-          <button
-            className="btn btn--secondary"
+          <Button
+            variant="secondary"
             onClick={() => navigate("/add-product")}
           >
             Add Product
-          </button>
+          </Button>
         </div>
       </section>
     </div>

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { getProductById, updateProduct } from "../services/productService"
 import type { UpdateProduct } from "../types/product";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 
 function EditProduct() {
@@ -97,7 +98,7 @@ function EditProduct() {
               }))
             }
             />
-            <button type="submit" className="form__button">Update Product</button>
+            <Button type="submit" variant="primary">Update Product</Button>
       </form>
     </>
   )

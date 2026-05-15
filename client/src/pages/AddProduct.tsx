@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { addProduct } from "../services/productService"
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 function AddProduct() {
   const [title, setTitle] = useState('');
@@ -78,7 +79,7 @@ function AddProduct() {
             value={image}
             onChange={(e) => setImage(e.target.value)}
             />
-            <button type="submit" className="form__button">Add Product</button>
+            <Button type="submit" variant="primary">Add Product</Button>
       </form>
     </>
   )
