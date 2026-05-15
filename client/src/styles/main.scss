@@ -22,4 +22,6 @@
 
 @use "pages/home";
 @use "pages/products";
-@use "pages/productDetails"
+@use "pages/productDetails";
+
+@use 'components/filter';

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { getAllProducts, deleteProduct } from "../services/productService"
 import type { Product } from "../types/product";
 import ProductCard from "../components/ProductCard";
+import SearchBar from "../components/SearchBar";
+import CategoryFilter from "../components/CategoryFilter";
 
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -75,38 +77,15 @@ function Products() {
   return (
     <div className="container products">
       <div className="products__filters">
-        <input
-        type="text"
-        placeholder="Search Products..."
-        value={search}
-        onChange={(e)=> setSearch(e.target.value)}
-        className="search-bar"
+        <SearchBar
+          value={search}
+          onChange={setSearch}
         />
-        {/* <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          {categories.map(category => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select> */}
-        <div className="filter">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={
-                selectedCategory === category
-                  ? "filter__btn active"
-                  : "filter__btn"
-              }
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+        <CategoryFilter
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onSelectedCategory={setSelectedCategory}
+        />
       </div>
       {filteredProducts.length === 0 ? (
           <div className="empty-state-inline">
