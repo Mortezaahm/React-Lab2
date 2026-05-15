@@ -8,10 +8,27 @@ function Products() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null)
   const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const filteredProducts = products.filter ((product) => {
-    return product.title.toLowerCase().includes(search.toLowerCase())
-  })
+  // const filteredProducts = products.filter ((product) => {
+  //   return product.title.toLowerCase().includes(search.toLowerCase())
+  // })
+
+  const categories = [
+    "all",
+    ...new Set(products.map(product => product.category))
+  ];
+
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch =
+      product.title.toLowerCase().includes(search.toLowerCase());
+
+    const matchesCategory =
+      selectedCategory === "all" ||
+      product.category === selectedCategory;
+
+  return matchesSearch && matchesCategory;
+});
 
   useEffect(() => {
     async function getAll () {
@@ -56,14 +73,41 @@ function Products() {
   }
 
   return (
-    <div className="container">
-      <input
+    <div className="container products">
+      <div className="products__filters">
+        <input
         type="text"
         placeholder="Search Products..."
         value={search}
         onChange={(e)=> setSearch(e.target.value)}
         className="search-bar"
-      />
+        />
+        {/* <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          {categories.map(category => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select> */}
+        <div className="filter">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={
+                selectedCategory === category
+                  ? "filter__btn active"
+                  : "filter__btn"
+              }
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
       {filteredProducts.length === 0 ? (
           <div className="empty-state-inline">
             <p>No products match "<strong>{search}</strong>"</p>

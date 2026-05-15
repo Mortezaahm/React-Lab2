@@ -1,3 +1,27 @@
+@use '../abstracts/functions' as *;
+
+
+.products {
+  &__filters {
+    display: flex;
+    gap: space(md);
+
+    margin-bottom: space(lg);
+
+    flex-wrap: wrap;
+  }
+}
+
+.search-bar,
+.category-filter {
+  padding: space(sm);
+
+  border: 1px solid #d1d5db;
+  border-radius: space(sm);
+
+  font-size: font-size(base);
+}
+
 .empty-state,
 .error-state {
   text-align: center;
@@ -22,4 +46,39 @@
   text-align: center;
   color: #777;
   grid-column: 1 / -1;
+}
+
+.filter {
+  display: flex;
+
+  gap: space(sm);
+
+  flex-wrap: wrap;
+
+  margin-bottom: space(lg);
+
+  &__btn {
+    padding: space(sm) space(md);
+
+    border: none;
+
+    border-radius: space(sm);
+
+    cursor: pointer;
+
+    background: #e5e7eb;
+
+    transition: 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: color(primary);
+      color: white;
+      font-weight: bold;
+    }
+  }
 }

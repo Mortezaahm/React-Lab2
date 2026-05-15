@@ -47,19 +47,19 @@ function ProductDetails() {
       <img src={productDetail.image} alt={productDetail.title} />
 
       <div className="product-details__info">
-          <h3 className="product-card__title">
+          <h3 className="product-details__title">
           {productDetail.title}
           </h3>
 
-        <p className="product-card__category">
+        <p className="product-details__category">
           {productDetail.description}
         </p>
 
-        <p className="product-card__price">
+        <p className="product-details__price">
           {productDetail.price} $
         </p>
 
-        <p className="product-card__category">
+        <p className="product-details__category">
           {productDetail.category}
         </p>
       </div>
