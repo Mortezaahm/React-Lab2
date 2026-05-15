@@ -3,38 +3,47 @@
 @use '../abstracts/functions' as *;
 
 .navbar {
-    background: color(light);
-    border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background: color(light);
+  border-bottom: 1px solid #eee;
 
-    &__container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 12px 16px;
-    }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+  }
 
-    &__logo{
-        font-size: font-size(base);
-        color: color(danger);
+  &__logo {
+    font-size: font-size(base);
+    color: color(danger);
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  &__links {
+    display: flex;
+    gap: space(md);
+
+    a {
+      transition: 200ms ease;
+      text-decoration: none;
+      color: black;
+
+      &.active {
         font-weight: bold;
-        text-decoration: none;
+        border-bottom: 2px solid black;
+      }
+
+      &:hover {
+        transform: translateY(-4px) scale(1.03);
+      }
     }
-    &__links{
-        display: flex;
-        gap: space(md);
-        a {
-            transition: 200ms ease;
-            text-decoration: none;
-            &.active {
-                font-weight: bold;
-                border-bottom: 2px solid black;
-            }
-            &:hover{
-            transform: translateY(-4px) scale(1.03);
-            }
-        }
-    }
-    &__toggle {
+  }
+
+  &__toggle {
     display: none;
     font-size: 24px;
     background: none;
@@ -42,27 +51,43 @@
     cursor: pointer;
   }
 
-  /* mobile menu */
   &__mobile {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    margin-top: 56px;
+
+    display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 16px;
+    padding: 24px;
     background: white;
     border-top: 1px solid #eee;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1999;
 
     a {
       text-decoration: none;
       color: black;
     }
-
-    &.open {
-      display: flex;
-    }
   }
 
-  /* responsive */
+  &__mobile.open {
+      transform: translateX(0);
+    }
+
+  &__overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 1998;
+    }
+
   @media (max-width: 768px) {
+
     &__links {
       display: none;
     }
@@ -70,5 +95,9 @@
     &__toggle {
       display: block;
     }
+
+    &__mobile {
+      width: 100%;
     }
+  }
 }

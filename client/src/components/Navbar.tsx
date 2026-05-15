@@ -10,25 +10,29 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar__container">
         <NavLink to="/" className="navbar__logo">Logo</NavLink>
+
+        {/* Desktop Links */}
         <div className="navbar__links">
-          <NavLink to="/" onClick={closeMenu}>Home</NavLink>
-          <NavLink to="/products" onClick={closeMenu}> Products </NavLink>
-          <NavLink to="/add-product" onClick={closeMenu}>Add Product</NavLink>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/products"> Products </NavLink>
+          <NavLink to="/add-product">Add Product</NavLink>
         </div>
+
+        {/* Mobile Links */}
+        <button onClick={() => setIsOpen(!isOpen)} className="navbar__toggle">
+          ☰ Menu
+        </button>
+
       </div>
 
-
-
-      <button onClick={() => setIsOpen(!isOpen)} className="navbar__toggle">
-        ☰ Menu
-      </button>
-
-      {isOpen && (
-        <div className="navbar__mobile">
+      {/* Mobile menu */}
+      <div className={`navbar__mobile ${isOpen ? 'open' : ''}`}>
           <NavLink to="/"  onClick={closeMenu}>Home</NavLink>
           <NavLink  to="/products" onClick={closeMenu}>Products</NavLink>
           <NavLink  to="/add-product" onClick={closeMenu}>Add Product</NavLink>
-        </div>
+      </div>
+      {isOpen && (
+        <div className="navbar__overlay" onClick={closeMenu}></div>
       )}
 
     </nav>
